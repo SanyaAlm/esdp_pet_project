@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Catalog</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class='nav-item'>
+                                <a class="nav-link-color" href="{% url 'home' %}">Главная страница</a>
+                            </li>
+                            <li class='nav-item'>
+                                <a class="nav-link-color" href="{% if user.is_authenticated %}{% url 'shop_create' %}{% else %}{% url 'login_page' %}{% endif %}">Создать магазин</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+<div class="container">
+    <h2 class="mb-3 mt-4">Каталог магазинов</h2>
+        {% include 'partial/search_form.html' %}
+    <div class="row">
+                {% for shop in shops %}
+                    <div class="col-12 col-md-4 mb-3 special-col">
+                        <a href="{% url 'shop_view' shop_id=shop.id %}" class="card-banner">
+                  <span class="card-body widget-collection">
+                      <picture>
+                          <source type="image/webp" class="inside-collection-image lazy entered"
+                                  data-srcset="{{ shop.logo.url }}"
+                                  data-ll-status="entered" srcset="{{ shop.logo.url }}">
+                          <img class="inside-collection-image lazy entered loaded" src="{{ shop.logo.url }}"
+                               data-src="{{ shop.logo.url }}" alt="Аксессуары" data-ll-status="loaded">
+                      </picture>
+                  </span>
+                            <span class="text-bottom">
+                      <h5 class="title">{{ shop.name }}</h5>
+                  </span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="mt-5">
+            {% if is_paginated %}
+                {% include 'partial/pagination.html' %}
+            {% endif %}
+            </div>
+        </div>
+</body>
+</html>

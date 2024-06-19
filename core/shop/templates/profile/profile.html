@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+
+<div class="container my-5">
+    <div class="border main-card">
+        <!-- Первый блок -->
+        <div class="d-flex ">
+            <div class="card border-0 w-100">
+                <div class="card-body">
+                    <div class="text-center mb-5">
+                        <h1>Здравствуйте {{ user.last_name }} {{ user.first_name }}</h1>
+                    </div>
+                    <div>
+                        <div class="col-md-12">
+                            <div class="d-flex border px-3 align-items-center py-2 profile-info">
+                                <span class="w-50">Имя</span>
+                                <h5 class="mb-0 card-info">{{ user.first_name }}</h5>
+                            </div>
+                            <div class="d-flex border px-3 align-items-center py-2 profile-info">
+                                <span class="w-50">Фамилия</span>
+                                <h5 class="mb-0 card-info">{{ user.last_name }}</h5>
+                            </div>
+                            <div class="d-flex border px-3 align-items-center py-2 profile-info">
+                                <span class="w-50">Эл.почта</span>
+                                <h5 class="mb-0 card-info">{{ user.email }}</h5>
+                            </div>
+                            <div class="d-flex border px-3 align-items-center py-2 profile-info">
+                                <span class="w-50">Телефон</span>
+                                <h5 class="mb-0 card-info">{{ user.phone }}</h5>
+                            </div>
+                            <div class="d-flex border px-3 align-items-center py-2 profile-info">
+                                <span class="w-50">Дата регистрации</span>
+                                <h5 class="mb-0 card-info">{{ user.date_joined }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="position-sticky top-100">
+                        <div class="d-flex mt-2 main-card-btn">
+                            <a href="{% url 'update_user' id=user.id %}"
+                               class="btn w-50 border border-2 border-info rounded-2 me-1">Изменить данные
+                                профиля</a>
+                            <a href="{% url 'change_password' id=user.id %}"
+                               class="btn w-50 border border-2 border-info rounded-2 ms-1">Изменить пароль</a>
+                        </div>
+                        <a href="{% url 'shop_create' %}" class="btn btn-info text-white w-100 mt-3">Создать магазин</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Второй блок -->
+        <input id="statistics" hidden value="{{ statistics }}">
+        <div class="d-flex flex-grow-1 flex-column">
+            <div class="card border-0 justify-content-between" style="flex: 1; padding: 1.25rem">
+                <div class="text-center">
+                    <canvas id="incomeChart" class="mt-3 w-100" height="200"></canvas>
+                    <canvas id="orderChart" class="mt-3 w-100" height="200"></canvas>
+                </div>
+                <a href="{% url 'statistic' id=user.id %}" class="btn btn-info text-white w-100 mt-3">Подробная статистика</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card mt-3">
+        <div class="card-body text-center">
+            <h4 class="mb-3">Информация о магазинах:</h4>
+            <div class="">
+                {% for shop in shops %}
+                    <div class="my-2 border border-info rounded-3">
+                        <a href="{% url 'shop_view' shop_id=shop.id %}" class="card-banner">
+                            <span class="card-body widget-collection">
+                                <picture>
+                                    <source type="image/webp" class="inside-collection-image lazy entered"
+                                            data-srcset="{{ shop.logo.url }}"
+                                            data-ll-status="entered" srcset="{{ shop.logo.url }}">
+                                    <img class="inside-collection-image lazy entered loaded" src="{{ shop.logo.url }}"
+                                         data-src="{{ shop.logo.url }}" alt="Изображение магазина"
+                                         data-ll-status="loaded">
+                                </picture>
+                            </span>
+                            <span class="text-bottom">
+                                <h5 class="title">{{ shop.name }}</h5>
+                            </span>
+                        </a>
+                        <div class="shop-div w-100 m-0 d-flex rounded-1">
+                            <div class="shop-div-btn">
+                                <a href="{% url 'shop_update' id=shop.id %}" class="btn rounded-0 shop-btn">Изменить
+                                    магазин</a>
+                                <form method="post" action="{% url 'shop_delete' id=shop.id %}"
+                                      style="display: contents">
+                                    {% csrf_token %}
+                                    <button type="button" class="btn rounded-0 delete-btn shop-btn">Удалить магазин
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="shop-div-btn">
+                                <a href="{% url 'shop_products' shop_id=shop.id %}" class="btn rounded-0 shop-btn">Список
+                                    товаров</a>
+                                <a href="{% url 'shop_orders' id=shop.id %}" class="btn rounded-0 shop-btn">Заказы</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmModalLabel">Подтвердить удаление</h5>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить этот магазин?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{% static 'js/statistics.js' %}"></script>
+<script src="{% static 'js/delete.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+.shop-btn{
+    width: 50%;
+}
+.shop-div-btn{
+    display: flex;
+    width: 50%;
+}
+
+@media screen and (width < 1200px){
+    .main-card-btn a{
+        width: 100% !important;
+        margin: 0.4rem 0 !important;
+    }
+}
+
+@media screen and (width < 1000px){
+    .card-info{
+        font-size: 14px;
+    }
+}
+
+@media screen and (width < 768px) {
+    .shop-btn{
+        width: 100%;
+    }
+
+    .shop-div-btn{
+        display: block;
+    }
+
+    .main-card{
+        display: block !important;
+    }
+
+    .main-card div{
+        width: 100% !important;
+    }
+}
+
+@media screen and (width < 400px) {
+    .shop-div{
+        display: block !important;
+    }
+
+    .shop-div-btn{
+        width: 100%;
+    }
+
+    .profile-info{
+        display: block !important;
+    }
+}

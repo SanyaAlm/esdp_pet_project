@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+                <div class="card shop-form-card">
+                    <div class="card-header text-center">
+                        <h2>Редактирование магазина</h2>
+                    </div>
+
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="{{ form.name.id_for_label }}">Название</label>
+                                {{ form.name }}
+                                {% if form.name.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.name.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.logo.id_for_label }}">Логотип</label>
+                                {{ form.logo }}
+                                {% if form.logo.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.logo.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.description.id_for_label }}">Описание</label>
+                                {{ form.description }}
+                                {% if form.description.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.description.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.theme.id_for_label }}">Тема</label>
+                                {{ form.theme }}
+                                {% if form.theme.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.theme.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.partner_id.id_for_label }}">ID Партнера:</label>
+                                {{ form.partner_id }}
+                                {% if form.partner_id.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ form.partner_id.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="{{ form.tg_token.id_for_label }}">Telegram Token:</label>
+                                {{ form.tg_token }}
+                                {% if form.tg_token.errors %}
+                                    <div class="text-danger">
+                                        {{ form.tg_token.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Сохранить изменения</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

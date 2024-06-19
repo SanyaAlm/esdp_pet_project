@@ -1,0 +1,76 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.logo {
+    width: 100px;
+}
+
+.card-title {
+    display: none;
+    text-align: center;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.btn-primary {
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    background-color: #3167EB;
+}
+
+
+@media screen and (width < 1000px) {
+    .register-text {
+        display: none;
+    }
+
+    .register-card {
+        width: 100% !important;
+    }
+
+    .register-main {
+        justify-content: center;
+        margin: 0;
+    }
+
+
+    .card-title {
+        display: block;
+    }
+
+}
+
+@media screen and (width < 800px) {
+    .register-title {
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (width < 500px) {
+    .register-title {
+        font-size: 20px;
+    }
+    .slogan{
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Регистрация</title>
+{% endblock %} {% block style %}
+<link rel="stylesheet" href="{% static 'css/account-register.css' %}"> {% endblock %} {% block content %} {% include 'partial/shop_nav.html' %}
+<div class="container">
+    <div class="my-3 register-card">
+        <div>
+            <img class="shop-logo" src="{{ shop.logo.url }}" alt="logo">
+            <h1 class="text-center">{{ shop.name }}</h1>
+            <p class="px-3 text-center text-secondary" style="text-wrap: balance">Войдите, чтобы получить доступ к личному кабинету и системе лояльности</p>
+        </div>
+        {{ form_valid }}
+        <form method="post" class="px-4 pb-4 pt-2">
+            {% csrf_token %} {% for field in form %}
+            <div class="form-group ">
+                {{ field.label }} {{ field }} {% if field.errors %}
+                <div class="alert alert-danger mt-5">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %} {% for field in account_form %}
+            <div class="form-group ">
+                {{ field.label }} {{ field }} {% if field.errors %}
+                <div class="alert alert-danger mt-5">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %} {% if form.non_field_errors %}
+            <div class="alert alert-danger mt-5">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary mt-2 form-control">Зарегистрироваться
+                </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

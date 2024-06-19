@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+</head>
+
+<body class="font-family-sans-serif">
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <div>
+            <a href="{% url 'home' %}" class="brand-wrap">
+                <img class="logo" src="{% static 'img/logo-social.png' %}" alt="logo">
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-2 login-container">
+    <div class="row justify-content-center login-card">
+        <div class="card login-form-card">
+            <div class="card-title">
+                <h1 class="login-title">Вход в аккаунт</h1>
+            </div>
+            <div class="card-body">
+                <form id="loginForm" method="post" action="{% url 'login_page' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                            <label>Email</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                                <div class="alert alert-danger mt-3">
+                                    {{ form.username.errors }}
+                                </div>
+                            {% endif %}
+
+                    </div>
+
+                    <div class="form-group">
+                            <label>Пароль</label>
+                            {{ form.password }}
+                            {% if form.password.errors %}
+                                <div class="alert alert-danger mt-3">
+                                    {{ form.password.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger mt-5">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <button id="loginButton" type="submit" class="btn btn-primary btn-block mt-3">
+                        Войти
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

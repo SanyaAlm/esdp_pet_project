@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+<div class="product-upload-container">
+    <form class="product-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="main_heading" style='text-align: center'>Создание магазина</h1>
+        <hr style="color: red">
+        <h4 class="h4" style="text-align: center">Пожалуйста заполните поля</h4>
+        <label for="id_name" class="form-label">Название магазина:</label>
+        <input id="id_name" class="form-control custom-input" type="text" name="name" placeholder="Название магазина" maxlength="255" required />
+        <label for="id_logo">Логотип магазина:</label>
+        <input class="custom-input form-control" type="file" name="logo" id="id_logo" />
+
+        <label for="id_description">Описание магазина:</label>
+        <textarea class="form-control custom-input" name="description" id="id_description" maxlength="2500" cols="30" rows="3" placeholder="Описание магазина"></textarea>
+
+        <label for="id_theme">Тема магазина:</label>
+        <select class="form-control custom-input" id="id_theme" name="theme">
+                <option value="black" selected> Темная </option>
+                <option value="white"> Светлая </option>
+                <option value="blue"> Синяя </option>
+            </select>
+
+        <label for="partner_id">ID Партнера(необязательно):</label>
+        <input id="partner_id" type="text" class="form-control custom-input" name="partner_id">
+        <p style="color: gray;">(Для получения ID Партнера у вас должен быть создан kaspi-магазин)</p>
+
+        <label for="tg_token">Telegram Token(необязательно):</label>
+        <input id='tg_token' class="form-control custom-input" type="text" name="tg_token">
+        <p style="color: gray;">(Для получения токена вам нужно обратиться в BotFather в telegram)</p>
+
+        <input type="hidden" name="user" value="{{ request.user.id }}">
+        <button type="submit" class="btn btn-submit">Создать</button> {% if form.errors %}
+        <div class="alert alert-danger">
+            <strong>Ошибка!</strong> Пожалуйста, проверьте введенные данные. {{ form.errors }}
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+{% endblock %}

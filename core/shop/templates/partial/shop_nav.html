@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light px-3 {% if shop.theme == 'blue' %} bg-primary {% endif %}"
+     style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); background-color: {{ shop.theme }}">
+    <div>
+        <a class="d-flex align-items-center text-decoration-none" href="{% url 'shop_view' shop_id=shop.id %}">
+            <img class="rounded-circle mr-3" style="object-fit: cover" src="{{ shop.logo.url }}" width="50" height="50"
+                 alt="{{ shop.name }}">
+            <div class="ms-3"
+                 style="color: {% if shop.theme == 'white' %} black {% else %} white {% endif %}">{{ shop.name }}</div>
+        </a>
+    </div>
+    <button class="navbar-toggler me-4 {% if shop.theme == 'white' %}{% else %} border-white{% endif %}" type="button"
+            data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon color-white"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end me-5" id="navbarNav">
+        <ul class="navbar-nav">
+            {% if shop.user == request.user %}
+                <li class="nav-item">
+                    <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                       href="{% url 'profile' shop.user.id %}">Личный кабинет</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                       href="{% url 'create_product' shop.id %}">Добавить продукт</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                   href="{% url 'home' %}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                   href="{% url 'shop_products' shop_id=shop.id %}">Все товары</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                   href="{% url 'bucket' shop_id=shop.id %}">Корзина</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                   href="{% url 'orders' shop_id=shop.id %}">Заказы</a>
+            </li>
+            {% if not shop in user.account.shops.all %}
+                <li class="nav-item">
+                    <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                       href="{% url 'account_login' shop_id=shop.id %}">Войти</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-{% if shop.theme == 'white' %}black{% else %}white{% endif %} ms-3"
+                       href="{% url 'logout' %}">Выйти</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,424 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$PCFI0oaTThtRu60LceX5EN$2QYoC7+L0nKz3AdotMjIs+yPM0Hd6mN8kZItHjqgdFk=",
+    "last_login": "2024-01-04T12:07:28.456Z",
+    "email": "madi_gaziz@mail.ru",
+    "first_name": "Madi",
+    "last_name": "Gaziz",
+    "phone": 77478835039,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "date_joined": "2024-01-04T11:56:27.288Z",
+    "phone_verification": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$j9u6FfOA85RHVUg05bidDh$pgx+omC859riifKb0agBzIjsTrlTuLz47CzEreCoytM=",
+    "last_login": "2024-01-08T17:27:47.937Z",
+    "email": "neloxchestno@gmail.com",
+    "first_name": "Gleb",
+    "last_name": "Lok",
+    "phone": 77018181845,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "date_joined": "2024-01-04T12:02:50.631Z",
+    "phone_verification": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$TG5OdbkqKAqTPdiuLFE16Y$2EsjgAu/mUnzfzmcTzr2l/rJOK+d1PdphX8yh9svUk8=",
+    "last_login": null,
+    "email": "neloxchestno@gmail.comfff",
+    "first_name": "Gleb",
+    "last_name": "fff",
+    "phone": 77017320402,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "date_joined": "2024-01-07T13:19:54.902Z",
+    "phone_verification": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$zfY6ZKuCtyIMO8i8CUsvCV$A60OL/YBqWBN+3/MMq3mfdzuaV6WsIfWvgR2aJVh1YA=",
+    "last_login": "2024-01-08T12:52:04.891Z",
+    "email": "sasha.14999933@gmail.com",
+    "first_name": "alexander",
+    "last_name": "shubnikov",
+    "phone": 77074543076,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "date_joined": "2024-01-08T12:51:43.584Z",
+    "phone_verification": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$9quLYGUpHpZRPIrFggB4Pp$s7pGHCgan2xHtzZ4uKEhknMCG4aISVh2yslVDxPcNrg=",
+    "last_login": "2024-01-09T13:59:12.233Z",
+    "email": "mad1i_gaziz@mail.ru",
+    "first_name": "Madi",
+    "last_name": "Gaziz",
+    "phone": 77011234567,
+    "is_staff": false,
+    "is_active": true,
+    "is_superuser": false,
+    "date_joined": "2024-01-09T13:59:11.831Z",
+    "phone_verification": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.account",
+  "pk": 1,
+  "fields": {
+    "user": 5,
+    "city": "Almaty",
+    "address": "Check",
+    "postal_code": "050000",
+    "token": null
+  }
+},
+{
+  "model": "shop.shop",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "name": "Check",
+    "logo": "logos/19445-banany_kg.jpg",
+    "description": "jlkjlkjk",
+    "theme": "black",
+    "partner_id": "Check",
+    "tg_token": null
+  }
+},
+{
+  "model": "shop.shop",
+  "pk": 10,
+  "fields": {
+    "user": 2,
+    "name": "Гле",
+    "logo": "logos/contactus-1920x500.png",
+    "description": "ааа",
+    "theme": "black",
+    "partner_id": null,
+    "tg_token": null
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+    "shop": 1,
+    "name": "Check",
+    "description": "Check",
+    "vendor_code": 123456,
+    "quantity": 87,
+    "price": "5000.00",
+    "discount": null,
+    "category": 1,
+    "discounted_price": null
+  }
+},
+{
+  "model": "shop.images",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "image": "product_images/19445-banany_kg_HyXVpho.jpg"
+  }
+},
+{
+  "model": "shop.images",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "image": "product_images/190111-morkov_kazahstan_ue7BSY5.jpg"
+  }
+},
+{
+  "model": "shop.images",
+  "pk": 3,
+  "fields": {
+    "product": 1,
+    "image": "product_images/233401-kukuruza_bonduelle_molodaya_425_ml_zPQnf4z.jpg"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+    "name": "Check"
+  }
+},
+{
+  "model": "shop.attributes",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "name": "Check",
+    "value": "Check"
+  }
+},
+{
+  "model": "shop.bucket",
+  "pk": 7,
+  "fields": {
+    "shop": 1,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "5000.00",
+    "user": null,
+    "ip_address": "5.34.46.118"
+  }
+},
+{
+  "model": "shop.bucket",
+  "pk": 11,
+  "fields": {
+    "shop": 1,
+    "product": 1,
+    "quantity": 1,
+    "unit_price": "5000.00",
+    "user": 1,
+    "ip_address": null
+  }
+},
+{
+  "model": "shop.order",
+  "pk": 1,
+  "fields": {
+    "account": null,
+    "user_ip": "5.34.46.118",
+    "shop": 1,
+    "total": "5000.00",
+    "date": "2024-01-09",
+    "payer_name": "Madi",
+    "payer_surname": "Gaziz",
+    "payer_email": "madi_gaziz@mail.ru",
+    "payer_phone": "87478835039",
+    "payer_city": "Almaty",
+    "payer_address": "Check",
+    "payer_postal_code": "050000",
+    "is_paid": false
+  }
+},
+{
+  "model": "shop.order",
+  "pk": 2,
+  "fields": {
+    "account": null,
+    "user_ip": "5.34.46.118",
+    "shop": 1,
+    "total": "25000.00",
+    "date": "2024-01-09",
+    "payer_name": "Madi",
+    "payer_surname": "Gaziz",
+    "payer_email": "madi_gaziz@mail.ru",
+    "payer_phone": "87478835039",
+    "payer_city": "Almaty",
+    "payer_address": "Check",
+    "payer_postal_code": "050000",
+    "is_paid": false
+  }
+},
+{
+  "model": "shop.order",
+  "pk": 3,
+  "fields": {
+    "account": null,
+    "user_ip": "193.43.251.140",
+    "shop": 1,
+    "total": "5000.00",
+    "date": "2024-01-09",
+    "payer_name": "йцу",
+    "payer_surname": "йцу",
+    "payer_email": "sasha.14999933@gmail.com",
+    "payer_phone": "123123",
+    "payer_city": "Almaty",
+    "payer_address": "146.,Novaya street",
+    "payer_postal_code": "050024",
+    "is_paid": false
+  }
+},
+{
+  "model": "shop.order",
+  "pk": 4,
+  "fields": {
+    "account": null,
+    "user_ip": "193.43.251.140",
+    "shop": 1,
+    "total": "5000.00",
+    "date": "2024-01-09",
+    "payer_name": "ALEXANDR",
+    "payer_surname": "SHUBNIKOV",
+    "payer_email": "sasha.14999933@gmail.com",
+    "payer_phone": "+77054779047",
+    "payer_city": "Almaty",
+    "payer_address": "146.,Novaya street",
+    "payer_postal_code": "050024",
+    "is_paid": false
+  }
+},
+{
+  "model": "shop.order",
+  "pk": 5,
+  "fields": {
+    "account": 1,
+    "user_ip": null,
+    "shop": 1,
+    "total": "5000.00",
+    "date": "2024-01-09",
+    "payer_name": "Madi",
+    "payer_surname": "Gaziz",
+    "payer_email": "mad1i_gaziz@mail.ru",
+    "payer_phone": "77011234567",
+    "payer_city": "Almaty",
+    "payer_address": "Check",
+    "payer_postal_code": "050000",
+    "is_paid": false
+  }
+},
+{
+  "model": "shop.order",
+  "pk": 6,
+  "fields": {
+    "account": 1,
+    "user_ip": null,
+    "shop": 1,
+    "total": "5000.00",
+    "date": "2024-01-09",
+    "payer_name": "Madi",
+    "payer_surname": "Gaziz",
+    "payer_email": "madi_gaziz@mail.ru",
+    "payer_phone": "77011234567",
+    "payer_city": "Almaty",
+    "payer_address": "Check",
+    "payer_postal_code": "050000",
+    "is_paid": false
+  }
+},
+{
+  "model": "shop.order",
+  "pk": 7,
+  "fields": {
+    "account": 1,
+    "user_ip": null,
+    "shop": 1,
+    "total": "5000.00",
+    "date": "2024-01-09",
+    "payer_name": "Madi",
+    "payer_surname": "Gaziz",
+    "payer_email": "madi_gaziz@mail.ru",
+    "payer_phone": "77011234567",
+    "payer_city": "Almaty",
+    "payer_address": "Check",
+    "payer_postal_code": "050000",
+    "is_paid": false
+  }
+},
+{
+  "model": "shop.orderproducts",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "order": 1,
+    "quantity": 1,
+    "price_per_product": "5000.00"
+  }
+},
+{
+  "model": "shop.orderproducts",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "order": 2,
+    "quantity": 5,
+    "price_per_product": "25000.00"
+  }
+},
+{
+  "model": "shop.orderproducts",
+  "pk": 3,
+  "fields": {
+    "product": 1,
+    "order": 3,
+    "quantity": 1,
+    "price_per_product": "5000.00"
+  }
+},
+{
+  "model": "shop.orderproducts",
+  "pk": 4,
+  "fields": {
+    "product": 1,
+    "order": 4,
+    "quantity": 1,
+    "price_per_product": "5000.00"
+  }
+},
+{
+  "model": "shop.orderproducts",
+  "pk": 5,
+  "fields": {
+    "product": 1,
+    "order": 5,
+    "quantity": 1,
+    "price_per_product": "5000.00"
+  }
+},
+{
+  "model": "shop.orderproducts",
+  "pk": 6,
+  "fields": {
+    "product": 1,
+    "order": 6,
+    "quantity": 1,
+    "price_per_product": "5000.00"
+  }
+},
+{
+  "model": "shop.orderproducts",
+  "pk": 7,
+  "fields": {
+    "product": 1,
+    "order": 7,
+    "quantity": 1,
+    "price_per_product": "5000.00"
+  }
+},
+{
+  "model": "shop.accountshops",
+  "pk": 1,
+  "fields": {
+    "account": 1,
+    "shop": 1
+  }
+}
+]

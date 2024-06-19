@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+
+{% block content%}
+<section class="section-content padding-y bg">
+    <div class="container">
+     {% for shop, total in total_price_by_shop.items %}
+     <h6 class="mt-3 text-center">Магазин: {{ shop }}</h6>
+    {% for item in bucket %}
+    {% if item.product.shop.name == shop %}
+        <form class="card" action="" method="post">
+            <div class="row no-gutters">
+                <aside class="col-md-8 col-lg-9 cart-items-wrapper">
+                    <article class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-7">
+                                <figure class="media">
+                                    {% for img in item.product.images.all %}
+                                    <a href="#" class="img-wrap me-3"> <img class=" border img-sm" src="{{ img.image.url }}" alt=""> </a>
+                                    {% endfor %}
+                                    <figcaption>
+                                        <a href="" class="title h6">{{ item.product.name }}</a>
+                                        <p class="text-muted small"></p>
+                                        <div class="price-wrap">
+                                            <span id="price{{ item.product.price }}">{{ item.product.price }}</span> тг / шт.
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        <div class="col-md-5 text-md-right text-right d-flex" >
+                            <div class="input-group input-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-light" type="button" id="button-minus" onclick="decrementQuantity('{{ item.id }}')">
+                                        -
+                                    </button>
+                                </div>
+                                <input type="text" id="quantity-{{ item.id }}" class="text-center form-control mx-2" name="cart-quantity" value="{{ item.quantity }}">
+                                  <div class="input-group-append">
+                                      <button class="btn btn-light" type="button" id="button-plus" onclick="incrementQuantity('{{ item.id }}')">
+                                          +
+                                      </button>
+
+                                  </div>
+                            </div>
+                                <a href="#" class="delete-from-bucket ms-2 btn btn-light" data-item-id="{{ item.id }}"> <i class="fa fa-trash"></i></a>
+                        </div>
+                        </div>
+                    </article>
+                </aside>
+            </div>
+        </form>
+     {% endif %}
+    {% endfor %}
+           <aside class="border-left cart-aside ">
+                <div class="card-body">
+                    <dl class="d-flex mb-0 " style="justify-content: space-between">
+                        <dl>
+                            <strong>Итого:</strong>
+                        </dl>
+                        <div class="text-right text-dark">
+                            <span name="{{shop}}">{{ total }} тг.</span>
+                        </div>
+                    </dl>
+                    <hr>
+                    <a href="" class="btn btn-primary btn-block hide-">Оформить заказ</a>
+                </div>
+            </aside>
+    {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

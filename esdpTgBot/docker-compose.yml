@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  tg_bot:
+    container_name: tg-bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '5656:5656'
+    volumes:
+      - .:/usr/src/telegram_bot
+    command: bash -c "python3 shop_bot.py"
+
+networks:
+  default:
+    external: True
+    name: default_net

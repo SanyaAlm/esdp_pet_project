@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Вход в аккаунт</title>
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block script %}
+    <script src="{% static 'js/token.js' %}" defer></script>
+{% endblock %}
+{% block content %}
+    {% include 'partial/shop_nav.html' %}
+    <div class="container">
+        <div class="login-card">
+        <div>
+            <img class="shop-logo" src="{{ shop.logo.url }}" alt="logo">
+            <h1 class="text-center">{{ shop.name }}</h1>
+            <p class="px-3 text-center text-secondary" style="text-wrap: balance;">Войдите, чтобы получить доступ к личному кабинету и системе лояльности</p>
+        </div>
+            <form method="post" id="loginForm" class="px-4 pb-4 pt-2">
+                {% csrf_token %}
+                <div class="form-group ">
+                    <label>Email</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <div class="alert alert-danger mt-5">
+                            {{ form.username.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <div class="alert alert-danger mt-5">
+                            {{ form.password.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger mt-5">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary mt-2 form-control">Вход
+                </button>
+            </form>
+        <div class="text-center">
+            <p>Нет аккаунта? <a href="{% url 'account_register' shop_id=shop.id %}">Присоединиться</a></p>
+        </div>
+        </div>
+    </div>
+{% endblock %}

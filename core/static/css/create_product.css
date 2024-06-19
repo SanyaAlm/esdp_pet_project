@@ -1,0 +1,51 @@
+.product-upload-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form .btn-submit {
+    background-color: #4CAF50; /* Зеленый */
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px 0;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.product-form .btn-submit:hover {
+    background-color: #89e1e1;
+    color: white;
+    border: 1px solid #89e1e1;
+}
+
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
+}
+
+.m-right {
+    margin-right: 20px;
+}

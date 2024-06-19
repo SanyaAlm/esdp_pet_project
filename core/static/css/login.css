@@ -1,0 +1,29 @@
+.login-card {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 40rem;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.shop-logo {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+}
+
+@media screen and (width < 500px) {
+    .login-card {
+        position: relative;
+        top: 3rem;
+        left: 0;
+        transform: translate(0, 0);
+    }
+
+    .login-content {
+        padding-right: 0;
+        border-right: none;
+    }
+}
